@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Storeflow help - Template guide</title>
+    <link href="/shared/css/documentation.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="/shared/css/pygments.css" media="screen" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="/css/print.css" type="text/css" media="print">
+    <script src="/shared/js/jquery.js" type="text/javascript"></script>
+    <script src="/shared/js/documentation.js" type="text/javascript"></script>
+    <script src="/js/help.js" type="text/javascript"></script>
+  </head>
+
+  <body class="documentation">
+    <div id="wrapper">
+
+      <div class="content">
+        <h1>Template guide</h1>
+        <h2 id='introduction'>Introduction</h2>
+
+<p>Storeflow&#8217;s powerful and flexible template engine allows you to customize the design of your store using HTML, CSS and a range of functions and variables.</p>
+
+<p>The template engine provides the following:</p>
+
+<ul>
+<li>Logic functions</li>
+
+<li>Helpers</li>
+
+<li>Global variables</li>
+
+<li>Objects</li>
+</ul>
+
+<p><a href='http://support.storeflowhq.com/help/kb/templates/template-reference'>Click here to access the template reference.</a></p>
+
+<p><strong>This guide assumes you know HTML and CSS basics.</strong></p>
+
+<h2 id='files_and_directories'>Files and Directories</h2>
+
+<p>Every theme is based around the same directory structure. A theme will have the following directories:</p>
+
+<pre><code>assets
+config
+layouts
+snippets
+templates</code></pre>
+
+<ul>
+<li>
+<p><strong>assets</strong> &#8212; Every CSS, Javascript, image or media file must be stored in this directory. This is the public directory of the theme.</p>
+</li>
+
+<li>
+<p><strong>config</strong> &#8212; A theme will often have a set of settings that allow you to make certain changes to it in the administration panel. These settings are stored as a JSON object in a file called <code>settings.json</code>.</p>
+</li>
+
+<li>
+<p><strong>layouts</strong> &#8212; A layout is all the HTML that is wrapped around your templates. A theme requires at least one layout file, usually called <code>theme.liquid</code>.</p>
+</li>
+
+<li>
+<p><strong>snippets</strong> &#8212; Snippets are pieces of HTML and template code that you can include in your template files.</p>
+</li>
+
+<li>
+<p><strong>templates</strong> &#8212; For each part of your store there is a corresponding template file. These are the required template files:</p>
+
+<p>404.liquid<br /> cart.liquid<br /> collection.liquid<br /> index.liquid<br /> page.liquid<br /> product.liquid<br /> search.liquid</p>
+</li>
+</ul>
+
+<h2 id='the_basics'>The Basics</h2>
+
+<p>A good way to start building a theme is to create the main layout file. So, let&#8217;s create all the required directories (see above) and add a file called <code>theme.liquid</code> to the <code>layouts</code> directory. This is what a basic <code>theme.liquid</code> file might look like:</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;{{ site.title }}&lt;/title&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+  {{ &#39;style.css&#39; | asset_url | stylesheet_tag }}
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;{{ site.title }}&lt;/h1&gt;
+
+  {% for collection in collections %}
+    &lt;p&gt;&lt;a href=&quot;{{ collection.path }}&quot;&gt;{{ collection.title }}&lt;/a&gt;&lt;/p&gt;
+  {% endfor %}
+
+  {{ content_for_layout }}
+
+  &lt;p&gt;Copyright {{ site.title }} - {{ &#39;all_rights_reserved&#39; | translate }}.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<p>Notice the strange brackets and tags? This is how we get information from our store and place it into our templates. Let&#8217;s break it down to smaller sections and get started on the fun stuff.</p>
+
+<h3 id='objects'>Objects</h3>
+
+<p>The first thing you&#8217;ll notice is the title tag:</p>
+
+<pre><code>&lt;title&gt;{{ site.title }}&lt;/title&gt;</code></pre>
+
+<p>The template engine allows you to use objects. An object gives you information on a specific part of your store by using what&#8217;s called properties. In this case <code>site</code> is an object and <code>title</code> is a property and when you combine the two into <code>site.title</code> you will get the title of your store that you defined in the administration panel.</p>
+
+<p>You can get a lot more information about your store by using all the available objects. <a href='http://support.storeflowhq.com/help/kb/templates/objects'>Click here to read more about objects.</a></p>
+
+<h3 id='helpers'>Helpers</h3>
+
+<p>So, on to the next part:</p>
+
+<pre><code>{{ &#39;style.css&#39; | asset_url | stylesheet_tag }}</code></pre>
+
+<p>Another powerful feature of the template engine is the use of helpers. In this case we are sending the text <code>style.css</code> to the <code>asset_url</code> helper, which adds the theme&#8217;s public directory to our stylesheet name:</p>
+
+<pre><code>http://static.storecdn.com/assets/0000/0001/theme/style.css</code></pre>
+
+<p>Then we send THAT to the <code>stylesheet_tag</code> helper, which generates a complete &#60;link&#62; tag for our HTML:</p>
+
+<pre><code>&lt;link href=&quot;http://static.storecdn.com/assets/0000/0001/theme/style.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; media=&quot;all&quot; /&gt;</code></pre>
+
+<p>There are a lot of more helpers available. <a href='http://support.storeflowhq.com/help/kb/templates/helpers'>Click here to read more about helpers.</a></p>
+
+<h3 id='logic_functions_and_global_variables'>Logic Functions and Global Variables</h3>
+
+<p>This next part is a bit tricky:</p>
+
+<pre><code>{% for collection in collections %}
+  &lt;p&gt;&lt;a href=&quot;{{ collection.path }}&quot;&gt;{{ collection.title }}&lt;/a&gt;&lt;/p&gt;
+{% endfor %}</code></pre>
+
+<p>When showing a list of objects, such as collections, you use a <code>for loop</code>. What a for loop does is go through each item in the list and show the HTML code that you provide. In this case we are showing a list of all the collections in our store and generating a link to the collection&#8217;s page. Notice that we are using the properties <code>path</code> and <code>title</code> for each collection. This is the result of our for loop:</p>
+
+<pre><code>&lt;p&gt;&lt;a href=&quot;/en/collections/womenswear&quot;&gt;Womenswear&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/en/collections/menswear&quot;&gt;Menswear&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/en/collections/shoes&quot;&gt;Shoes&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/en/collections/accessories&quot;&gt;Accessories&lt;/a&gt;&lt;/p&gt;</code></pre>
+
+<p>There are more logic functions available. <a href='http://support.storeflowhq.com/help/kb/templates/logic-functions'>Click here to read more about logic functions.</a> There are more global variables available. <a href='http://support.storeflowhq.com/help/kb/templates/global-variables'>Click here to read more about global variables.</a></p>
+
+<h3 id='content_for_layout'>Content for Layout</h3>
+
+<p>Moving on to the next part:</p>
+
+<pre><code>{{ content_for_layout }}</code></pre>
+
+<p>With this tag you can tell the theme where to place the content from all the different templates, such as the product view, content page or search results. Simple and effective.</p>
+
+<h3 id='translations'>Translations</h3>
+
+<p>And finally, we arrive at the last part:</p>
+
+<pre><code>&lt;p&gt;Copyright {{ site.title }} - {{ &#39;all_rights_reserved&#39; | translate }}.&lt;/p&gt;</code></pre>
+
+<p>Translations are a core element of Storeflow and you can translate any part of your theme. By using the translate helper you are telling Storeflow to look up the string &#8216;all_rights_reserved&#8217; in the language in which your customer is seeing your store. There are a number of predefined translations that you can use in your templates, but you can also create your own in the administration panel.</p>
+
+<h3 id='final_outcome'>Final Outcome</h3>
+
+<p>Here is the final outcome of our theme:</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;My Store&lt;/title&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+  &lt;link href=&quot;http://static.storecdn.com/assets/0000/0001/theme/style.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; media=&quot;all&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;My Store&lt;/h1&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/en/collections/womenswear&quot;&gt;Womenswear&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;/en/collections/menswear&quot;&gt;Menswear&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;/en/collections/shoes&quot;&gt;Shoes&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;/en/collections/accessories&quot;&gt;Accessories&lt;/a&gt;&lt;/p&gt;
+
+  Welcome to my store!
+
+  &lt;p&gt;Copyright My Store - All Rights Reserved.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<p>There are a lot more things you can do with the template engine so go ahead and read about all the different objects, helpers and variables in our template reference.</p>
+
+<p><a href='http://support.storeflowhq.com/help/kb/templates/template-reference'>Click here to access the template reference.</a></p>
+      </div>
+
+      <div id="js-sidebar" class="sidebar-shell">
+        <div class="js-accordion-list sidebar-module">
+          <ul>
+            
+            <li class="js-topic">
+              
+                <h3><a href="#">Templates</a></h3>
+              
+              <ul class="js-guides">
+                
+                  
+                    <li><a href="/template_reference">Template reference</a></li>
+                  
+                
+                  
+                    <li><a href="/available_translations">Available Translations</a></li>
+                  
+                
+                  
+                    <li class="disable"><span>Template guide</span></li>
+                  
+                
+                  
+                    <li><a href="/template_reference_logic_functions">Template reference logic functions</a></li>
+                  
+                
+              </ul>
+            </li>
+            
+          </ul>
+        </div> <!-- /sidebar-module -->
+      </div><!-- /sidebar-shell -->
+
+    </div><!-- #wrapper -->
+
+  </body>
+</html>
