@@ -137,7 +137,7 @@
 
 <p>Adds text at the end of another text.</p>
 
-<p><code>{{ &#39;Hello&#39; | append: &#39; world!&#39; }}</code></p>
+<pre><code>{{ &#39;Hello&#39; | append: &#39; world!&#39; }}</code></pre>
 
 <p>Results in:</p>
 
@@ -147,7 +147,7 @@
 
 <p>Capitalizes the first letter in a given text.</p>
 
-<p><code>{{ &#39;hello world!&#39; | capitalize }}</code></p>
+<pre><code>{{ &#39;hello world!&#39; | capitalize }}</code></pre>
 
 <p>Results in:</p>
 
@@ -157,7 +157,7 @@
 
 <p>Converts every letter in a given text to lower caps.</p>
 
-<p><code>{{ &#39;Hello World!&#39; | downcase }}</code></p>
+<pre><code>{{ &#39;Hello World!&#39; | downcase }}</code></pre>
 
 <p>Results in:</p>
 
@@ -167,7 +167,7 @@
 
 <p>Enables you to put text within HTML tag properties. In this example we would like the title of a product to be added to the title property of a link tag. If the product title includes double quotes this could break the link tag, but by using escape the double quotes will be converted to safe characters.</p>
 
-<p><code>&lt;a href=&quot;{{ product.url }}&quot; title=&quot;{{ product.title | escape }}&quot;&gt;{{ product.title }}&lt;/a&gt;</code></p>
+<pre><code>&lt;a href=&quot;{{ product.url }}&quot; title=&quot;{{ product.title | escape }}&quot;&gt;{{ product.title }}&lt;/a&gt;</code></pre>
 
 <p>Results in:</p>
 
@@ -177,7 +177,7 @@
 
 <p>Prevents a given text from being escaped twice. If the escaped text in the example above would be escaped again, the result would be that the ampersand character would be converted to yet another symbol.</p>
 
-<p><code>{{ &#39;A &amp;quot;Better&amp;quot; World&#39; | escape }}</code></p>
+<pre><code>{{ &#39;A &amp;quot;Better&amp;quot; World&#39; | escape }}</code></pre>
 
 <p>Results in:</p>
 
@@ -185,7 +185,7 @@
 
 <p>But by using escape_once all the characters that were escaped before will not be escaped again.</p>
 
-<p><code>{{ &#39;A &amp;quot;Better&amp;quot; World&#39; | escape_once }}</code></p>
+<pre><code>{{ &#39;A &amp;quot;Better&amp;quot; World&#39; | escape_once }}</code></pre>
 
 <p>Results in:</p>
 
@@ -195,7 +195,7 @@
 
 <p>Highlights specific words in a given text by wrapping an HTML element around them, which you can then style with CSS.</p>
 
-<p><code>{{ &#39;To be or not to be!&#39; | highlight: &#39;be&#39; }}</code></p>
+<pre><code>{{ &#39;To be or not to be!&#39; | highlight: &#39;be&#39; }}</code></pre>
 
 <p>Results in:</p>
 
@@ -217,7 +217,7 @@ Line 3&#39;.newline_to_br }}</code></pre>
 
 <p>Returns a given text in either singular or plural form depending on the number provided.</p>
 
-<p><code>Hello {{ 3 | pluralize: &#39;world&#39;, &#39;worlds&#39; }}!</code></p>
+<pre><code>Hello {{ 3 | pluralize: &#39;world&#39;, &#39;worlds&#39; }}!</code></pre>
 
 <p>Results in:</p>
 
@@ -225,7 +225,7 @@ Line 3&#39;.newline_to_br }}</code></pre>
 
 <p>You can also translate the result of this function, if a translation exists.</p>
 
-<p><code>Spanish: {{ 3 | pluralize: &#39;Product&#39;, &#39;Products&#39; | translate }}</code></p>
+<pre><code>Spanish: {{ 3 | pluralize: &#39;Product&#39;, &#39;Products&#39; | translate }}</code></pre>
 
 <p>Results in:</p>
 
@@ -235,7 +235,7 @@ Line 3&#39;.newline_to_br }}</code></pre>
 
 <p>Adds text at the beginning of another text.</p>
 
-<p><code>{{ &#39;world!&#39; | prepend: &#39;Hello &#39; }}</code></p>
+<pre><code>{{ &#39;world!&#39; | prepend: &#39;Hello &#39; }}</code></pre>
 
 <p>Results in:</p>
 
@@ -245,7 +245,7 @@ Line 3&#39;.newline_to_br }}</code></pre>
 
 <p>Removes the contents of a given text.</p>
 
-<p><code>{{ &#39;To be or not to be!&#39; | remove: &#39;be&#39; }}</code></p>
+<pre><code>{{ &#39;To be or not to be!&#39; | remove: &#39;be&#39; }}</code></pre>
 
 <p>Results in:</p>
 
@@ -255,7 +255,7 @@ Line 3&#39;.newline_to_br }}</code></pre>
 
 <p>Removes only the first occurrence of the contents of a given text.</p>
 
-<p><code>{{ &#39;To be or not to be!&#39; | remove: &#39;be&#39; }}</code></p>
+<pre><code>{{ &#39;To be or not to be!&#39; | remove: &#39;be&#39; }}</code></pre>
 
 <p>Results in:</p>
 
@@ -265,7 +265,7 @@ Line 3&#39;.newline_to_br }}</code></pre>
 
 <p>Replaces the contents of a given text.</p>
 
-<p><code>{{ &#39;To be or not to be!&#39; | replace: &#39;be&#39;, &#39;replace&#39; }}</code></p>
+<pre><code>{{ &#39;To be or not to be!&#39; | replace: &#39;be&#39;, &#39;replace&#39; }}</code></pre>
 
 <p>Results in:</p>
 
@@ -275,7 +275,7 @@ Line 3&#39;.newline_to_br }}</code></pre>
 
 <p>Replaces only the first occurrence of the contents of a given text.</p>
 
-<p><code>{{ &#39;To be or not to be!&#39; | replace: &#39;be&#39;, &#39;replace&#39; }}</code></p>
+<pre><code>{{ &#39;To be or not to be!&#39; | replace: &#39;be&#39;, &#39;replace&#39; }}</code></pre>
 
 <p>Results in:</p>
 
@@ -285,7 +285,7 @@ Line 3&#39;.newline_to_br }}</code></pre>
 
 <p>Returns the number of characters in a given text.</p>
 
-<p><code>{{ &#39;Hello world!&#39; | size }}</code></p>
+<pre><code>{{ &#39;Hello world!&#39; | size }}</code></pre>
 
 <p>Results in:</p>
 
@@ -295,7 +295,7 @@ Line 3&#39;.newline_to_br }}</code></pre>
 
 <p>Removes HTML tags completely from a given text.</p>
 
-<p><code>{{ &#39;&lt;p&gt;Hello &lt;strong&gt;world!&lt;/strong&gt;&lt;/p&gt;&#39;.strip_html }}</code></p>
+<pre><code>{{ &#39;&lt;p&gt;Hello &lt;strong&gt;world!&lt;/strong&gt;&lt;/p&gt;&#39;.strip_html }}</code></pre>
 
 <p>Results in:</p>
 
@@ -317,7 +317,7 @@ Line 3&#39;.strip_newlines }}</code></pre>
 
 <p>Copies a given text a specific number of times.</p>
 
-<p><code>{{ &#39;Hello world!&#39; | times: 3 }}</code></p>
+<pre><code>{{ &#39;Hello world!&#39; | times: 3 }}</code></pre>
 
 <p>Results in:</p>
 
@@ -327,7 +327,7 @@ Line 3&#39;.strip_newlines }}</code></pre>
 
 <p>Translates a specific word into the currently selected language of your store. If a customer chooses to see your site in Spanish, the translation will be done automatically for you, as long as the word is defined in the language settings of your site.</p>
 
-<p><code>{{ &#39;hello_world&#39; | translate }}</code></p>
+<pre><code>{{ &#39;hello_world&#39; | translate }}</code></pre>
 
 <p>Results in:</p>
 
@@ -339,7 +339,7 @@ Line 3&#39;.strip_newlines }}</code></pre>
 
 <p>Shortens a given text to a specific number of characters and adds &#8217;&#8230;&#8217; at the end, which you will need to take into account when specifying the number of characters.</p>
 
-<p><code>{{ &#39;Hello world!&#39; | truncate: 8 }}</code></p>
+<pre><code>{{ &#39;Hello world!&#39; | truncate: 8 }}</code></pre>
 
 <p>Results in:</p>
 
@@ -349,7 +349,7 @@ Line 3&#39;.strip_newlines }}</code></pre>
 
 <p>Shortens a given text to a specific number of words and adds &#8217;&#8230;&#8217; at the end.</p>
 
-<p><code>{{ &#39;To be or not to be!&#39; | truncatewords: 4 }}</code></p>
+<pre><code>{{ &#39;To be or not to be!&#39; | truncatewords: 4 }}</code></pre>
 
 <p>Results in:</p>
 
@@ -359,7 +359,7 @@ Line 3&#39;.strip_newlines }}</code></pre>
 
 <p>Converts every letter in a given text to lower caps.</p>
 
-<p><code>{{ &#39;Hello world!&#39; | upcase }}</code></p>
+<pre><code>{{ &#39;Hello world!&#39; | upcase }}</code></pre>
 
 <p>Results in:</p>
 
@@ -371,7 +371,7 @@ Line 3&#39;.strip_newlines }}</code></pre>
 
 <p>Finds the first item in an array.</p>
 
-<p><code>{{ site.currencies.first.title }}</code></p>
+<pre><code>{{ site.currencies.first.title }}</code></pre>
 
 <p>Results in:</p>
 
@@ -381,7 +381,7 @@ Line 3&#39;.strip_newlines }}</code></pre>
 
 <p>Joins every item in an array and returns them in a list. You can specify a separator, which will appear between each item. This method works best when the <strong>map helper</strong> is applied.</p>
 
-<p><code>{{ site.currencies | map: &#39;code&#39; | join: &#39;, &#39; }}</code></p>
+<pre><code>{{ site.currencies | map: &#39;code&#39; | join: &#39;, &#39; }}</code></pre>
 
 <p>Results in:</p>
 
@@ -391,7 +391,7 @@ Line 3&#39;.strip_newlines }}</code></pre>
 
 <p>Finds the last item in an array.</p>
 
-<p><code>{{ site.currencies.last.title }}</code></p>
+<pre><code>{{ site.currencies.last.title }}</code></pre>
 
 <p>Results in:</p>
 
@@ -401,7 +401,7 @@ Line 3&#39;.strip_newlines }}</code></pre>
 
 <p>Joins every item in an array and returns a specific property of each item.</p>
 
-<p><code>{{ site.currencies | map: &#39;code&#39; }}</code></p>
+<pre><code>{{ site.currencies | map: &#39;code&#39; }}</code></pre>
 
 <p>Results in:</p>
 
@@ -409,7 +409,7 @@ Line 3&#39;.strip_newlines }}</code></pre>
 
 <p>Obviously this result isn&#8217;t very useful, but by applying other array helpers, such as <strong>join</strong>, we can make sense of it all.</p>
 
-<p><code>{{ site.currencies | map: &#39;code&#39; | join: &#39;, &#39; }}</code></p>
+<pre><code>{{ site.currencies | map: &#39;code&#39; | join: &#39;, &#39; }}</code></pre>
 
 <p>Results in:</p>
 
@@ -419,7 +419,7 @@ Line 3&#39;.strip_newlines }}</code></pre>
 
 <p>Returns the number of items in an array.</p>
 
-<p><code>{{ site.currencies.size }}</code></p>
+<pre><code>{{ site.currencies.size }}</code></pre>
 
 <p>Results in:</p>
 
@@ -445,7 +445,7 @@ ZAR - South African Rand</code></pre>
 
 <p>Formats date and time to the currently selected locale settings or to specific formatting options.</p>
 
-<p><code>{{ &#39;now&#39; | date }}</code></p>
+<pre><code>{{ &#39;now&#39; | date }}</code></pre>
 
 <p>Results in:</p>
 
@@ -453,7 +453,7 @@ ZAR - South African Rand</code></pre>
 
 <p>You can format the date and time any way you want with the formatting options listed below.</p>
 
-<p><code>Product is expected to arrive on {{ product.coming_soon_expected_date | date: &quot;%B %d, %Y (%A)&quot; }}</code></p>
+<pre><code>Product is expected to arrive on {{ product.coming_soon_expected_date | date: &quot;%B %d, %Y (%A)&quot; }}</code></pre>
 
 <p>Results in:</p>
 
@@ -461,7 +461,7 @@ ZAR - South African Rand</code></pre>
 
 <p>You can also type a date and then format it using the formatting options.</p>
 
-<p><code>Printed on {{ &#39;1.10.2011&#39; | date: &quot;%B %d, %Y (%A)&quot; }}</code></p>
+<pre><code>Printed on {{ &#39;1.10.2011&#39; | date: &quot;%B %d, %Y (%A)&quot; }}</code></pre>
 
 <p>Results in:</p>
 
@@ -503,7 +503,7 @@ ZAR - South African Rand</code></pre>
 
 <p>Performs a division.</p>
 
-<p><code>{{ 100 | divided_by: 25 }}</code></p>
+<pre><code>{{ 100 | divided_by: 25 }}</code></pre>
 
 <p>Results in:</p>
 
@@ -513,7 +513,7 @@ ZAR - South African Rand</code></pre>
 
 <p>Performs a subtraction.</p>
 
-<p><code>{{ 100 | minus: 25 }}</code></p>
+<pre><code>{{ 100 | minus: 25 }}</code></pre>
 
 <p>Results in:</p>
 
@@ -533,7 +533,7 @@ Price with money formatting: 10.99</code></pre>
 
 <p>You can also specify your own number but remember that the number should include the cents.</p>
 
-<p><code>{{ 1099 | money }}</code></p>
+<pre><code>{{ 1099 | money }}</code></pre>
 
 <p>Results in:</p>
 
@@ -541,7 +541,7 @@ Price with money formatting: 10.99</code></pre>
 
 <p>You can also add the currency sign or name by using the <strong>money_with_currency</strong> function.</p>
 
-<p><code>Price: {{ product.price | money_with_currency }}</code></p>
+<pre><code>Price: {{ product.price | money_with_currency }}</code></pre>
 
 <p>Results in:</p>
 
@@ -561,7 +561,7 @@ Price with money formatting: $10.99</code></pre>
 
 <p>You can also specify the currency manually.</p>
 
-<p><code>Price: {{ product.price | money_with_currency: &#39;EUR&#39; }}</code></p>
+<pre><code>Price: {{ product.price | money_with_currency: &#39;EUR&#39; }}</code></pre>
 
 <p>Results in:</p>
 
@@ -571,7 +571,7 @@ Price with money formatting: $10.99</code></pre>
 
 <p>Performs an addition.</p>
 
-<p><code>{{ 100 | plus: 25 }}</code></p>
+<pre><code>{{ 100 | plus: 25 }}</code></pre>
 
 <p>Results in:</p>
 
@@ -581,7 +581,7 @@ Price with money formatting: $10.99</code></pre>
 
 <p>Performs a multiplication.</p>
 
-<p><code>{{ 100 | times: 25 }}</code></p>
+<pre><code>{{ 100 | times: 25 }}</code></pre>
 
 <p>Results in:</p>
 
@@ -593,7 +593,7 @@ Price with money formatting: $10.99</code></pre>
 
 <p>Returns an HTML &#60;img&#62; tag for displaying an image. Usually chained with the asset_url function to ensure that the image is being fetched from the assets folder in your template. You can also specify an alt text.</p>
 
-<p><code>{{ &#39;image.png&#39; | asset_url | img_tag: &#39;My Image&#39; }}</code></p>
+<pre><code>{{ &#39;image.png&#39; | asset_url | img_tag: &#39;My Image&#39; }}</code></pre>
 
 <p>Results in:</p>
 
@@ -603,7 +603,7 @@ Price with money formatting: $10.99</code></pre>
 
 <p>Returns an HTML &#60;script&#62; tag for loading a Javascript file. Usually chained with the asset_url function to ensure that the Javascript file is being fetched from the assets folder in your template.</p>
 
-<p><code>{{ &#39;jquery.js&#39; | asset_url | script_tag }}</code></p>
+<pre><code>{{ &#39;jquery.js&#39; | asset_url | script_tag }}</code></pre>
 
 <p>Results in:</p>
 
@@ -613,7 +613,7 @@ Price with money formatting: $10.99</code></pre>
 
 <p>Returns an HTML &#60;link&#62; tag for loading a CSS file. Usually chained with the asset_url function to ensure that the CSS file is being fetched from the assets folder in your template.</p>
 
-<p><code>{{ &#39;style.css&#39; | asset_url | stylesheet_tag }}</code></p>
+<pre><code>{{ &#39;style.css&#39; | asset_url | stylesheet_tag }}</code></pre>
 
 <p>Results in:</p>
 
@@ -625,7 +625,7 @@ Price with money formatting: $10.99</code></pre>
 
 <p>Returns the full URL to your site&#8217;s assets and enables to access all the assets in a simple way.</p>
 
-<p><code>{{ &#39;image.png&#39; | asset_url }}</code></p>
+<pre><code>{{ &#39;image.png&#39; | asset_url }}</code></pre>
 
 <p>Results in:</p>
 
@@ -633,7 +633,7 @@ Price with money formatting: $10.99</code></pre>
 
 <p>You can also chain the URL with a tag function. In this example an &#60;img&#62; tag is being generated with an alt text.</p>
 
-<p><code>{{ &#39;image.png&#39; | asset_url | img_tag: &#39;My Image&#39; }}</code></p>
+<pre><code>{{ &#39;image.png&#39; | asset_url | img_tag: &#39;My Image&#39; }}</code></pre>
 
 <p>Results in:</p>
 
@@ -643,7 +643,7 @@ Price with money formatting: $10.99</code></pre>
 
 <p>Returns the URL to an icon of the flag of a specific country.</p>
 
-<p><code>{{ &#39;us&#39; | flag_img_url }}</code></p>
+<pre><code>{{ &#39;us&#39; | flag_img_url }}</code></pre>
 
 <p>Results in:</p>
 
@@ -651,7 +651,7 @@ Price with money formatting: $10.99</code></pre>
 
 <p>You can also specify the size of the flag (currently only &#8216;small&#8217; and &#8216;medium&#8217; are available) and chain the URL with the image tag.</p>
 
-<p><code>{{ &#39;uk&#39; | flag_img_url: &#39;medium&#39; | img_tag }}</code></p>
+<pre><code>{{ &#39;uk&#39; | flag_img_url: &#39;medium&#39; | img_tag }}</code></pre>
 
 <p>Results in:</p>
 
@@ -661,11 +661,11 @@ Price with money formatting: $10.99</code></pre>
 
 <p>Generates a link to a specific URL or object.</p>
 
-<p><code>{{ &#39;Go to StoreflowHQ.com&#39; | link_to: &#39;http://www.storeflowhq.com&#39; }}</code></p>
+<pre><code>{{ &#39;Go to StoreflowHQ.com&#39; | link_to: &#39;http://www.storeflowhq.com&#39; }}</code></pre>
 
 <p>You can also link directly to an object, such as a collection, page, product, etc.</p>
 
-<p><code>{{ product | link_to }}</code></p>
+<pre><code>{{ product | link_to }}</code></pre>
 
 <p>Results in:</p>
 
@@ -673,7 +673,7 @@ Price with money formatting: $10.99</code></pre>
 
 <p>You can link to an object using your own description:</p>
 
-<p><code>{{ &#39;View Product&#39; | link_to: product }}</code></p>
+<pre><code>{{ &#39;View Product&#39; | link_to: product }}</code></pre>
 
 <p>Results in:</p>
 
@@ -681,7 +681,7 @@ Price with money formatting: $10.99</code></pre>
 
 <p>You can link to an object by its handle.</p>
 
-<p><code>{{ pages.about-us | link_to }}</code></p>
+<pre><code>{{ pages.about-us | link_to }}</code></pre>
 
 <p>Results in:</p>
 
@@ -689,7 +689,7 @@ Price with money formatting: $10.99</code></pre>
 
 <p>Finally, you the option of a title property in all of the above cases.</p>
 
-<p><code>{{ &#39;Go to StoreflowHQ.com&#39; | link_to: &#39;http://www.storeflowhq.com&#39;, &#39;Storeflow Website&#39; }}</code></p>
+<pre><code>{{ &#39;Go to StoreflowHQ.com&#39; | link_to: &#39;http://www.storeflowhq.com&#39;, &#39;Storeflow Website&#39; }}</code></pre>
 
 <p>Results in:</p>
 
@@ -699,11 +699,11 @@ Price with money formatting: $10.99</code></pre>
 
 <p>Generates a link to the cart.</p>
 
-<p><code>{{ &#39;Go to Shopping Cart&#39; | link_to_cart }}</code></p>
+<pre><code>{{ &#39;Go to Shopping Cart&#39; | link_to_cart }}</code></pre>
 
 <p>Also used to generate a link when adding a product to the cart.</p>
 
-<p><code>{{ &#39;Add to Cart&#39; | link_to_cart: product }}</code></p>
+<pre><code>{{ &#39;Add to Cart&#39; | link_to_cart: product }}</code></pre>
 
 <p>Results in:</p>
 
@@ -713,57 +713,57 @@ Price with money formatting: $10.99</code></pre>
 
 <p>Generates a link to a specific collection. For the sake of simplicity, we recommend that you use the <code>link_to</code> tag when linking to a collection.</p>
 
-<p><code>{{ collection | link_to }}</code></p>
+<pre><code>{{ collection | link_to }}</code></pre>
 
 <p>However, the advantage of this helper is that you can link to a collection by a string handle or integer ID.</p>
 
-<p><code>{{ &#39;t-shirts&#39; | link_to_collection }}</code></p>
+<pre><code>{{ &#39;t-shirts&#39; | link_to_collection }}</code></pre>
 
 <h3 id='link_to_currency'>link_to_currency</h3>
 
 <p>Generates a link to a specific currency. For the sake of simplicity, we recommend that you use the <code>link_to</code> tag when linking to a currency.</p>
 
-<p><code>{{ currency | link_to }}</code></p>
+<pre><code>{{ currency | link_to }}</code></pre>
 
 <p>However, the advantage of this helper is that you can link to a currency by its ISO code.</p>
 
-<p><code>{{ &#39;USD&#39; | link_to_currency }}</code></p>
+<pre><code>{{ &#39;USD&#39; | link_to_currency }}</code></pre>
 
 <h3 id='link_to_language'>link_to_language</h3>
 
 <p>Generates a link to a specific language. For the sake of simplicity, we recommend that you use the <code>link_to</code> tag when linking to a language.</p>
 
-<p><code>{{ language | link_to }}</code></p>
+<pre><code>{{ language | link_to }}</code></pre>
 
 <p>However, the advantage of this helper is that you can link to a language by its ISO code.</p>
 
-<p><code>{{ &#39;en&#39; | link_to_language }}</code></p>
+<pre><code>{{ &#39;en&#39; | link_to_language }}</code></pre>
 
 <h3 id='link_to_page'>link_to_page</h3>
 
 <p>Generates a link to a specific page. For the sake of simplicity, we recommend that you use the <code>link_to</code> tag when linking to a page.</p>
 
-<p><code>{{ page | link_to }}</code></p>
+<pre><code>{{ page | link_to }}</code></pre>
 
 <p>However, the advantage of this helper is that you can link to a page by a string handle or integer ID.</p>
 
-<p><code>{{ &#39;about-us&#39; | link_to_page }}</code></p>
+<pre><code>{{ &#39;about-us&#39; | link_to_page }}</code></pre>
 
 <h3 id='link_to_product'>link_to_product</h3>
 
 <p>Generates a link to a specific product. For the sake of simplicity, we recommend that you use the <code>link_to</code> tag when linking to a product.</p>
 
-<p><code>{{ product | link_to }}</code></p>
+<pre><code>{{ product | link_to }}</code></pre>
 
 <p>However, the advantage of this helper is that you can link to a product by a string handle or integer ID.</p>
 
-<p><code>{{ &#39;storeflow-t-shirt&#39; | link_to_product }}</code></p>
+<pre><code>{{ &#39;storeflow-t-shirt&#39; | link_to_product }}</code></pre>
 
 <h3 id='product_img_url'>product_img_url</h3>
 
 <p>Returns the URL to a specific product image. The image size can be defined.</p>
 
-<p><code>{{ product.images.first | product_img_url: &#39;thumb&#39; }}</code></p>
+<pre><code>{{ product.images.first | product_img_url: &#39;thumb&#39; }}</code></pre>
 
 <p>Results in:</p>
 
@@ -797,19 +797,19 @@ original   1024x1024</code></pre>
               <ul class="js-guides">
                 
                   
-                    <li><a href="/template_reference">Template reference</a></li>
+                    <li><a href="/template-reference">Template reference</a></li>
                   
                 
                   
-                    <li><a href="/available_translations">Available Translations</a></li>
+                    <li><a href="/available-translations">Available Translations</a></li>
                   
                 
                   
-                    <li><a href="/template_guide">Template guide</a></li>
+                    <li><a href="/template-guide">Template guide</a></li>
                   
                 
                   
-                    <li><a href="/template_reference_logic_functions">Template reference logic functions</a></li>
+                    <li><a href="/template-reference-logic-functions">Template reference logic functions</a></li>
                   
                 
                   

@@ -1,5 +1,4 @@
 permalink: /:title
-safe: true
 auto: true
 server: true
 pygments: true

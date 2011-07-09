@@ -74,7 +74,9 @@ categories: templates
 
 Adds text at the end of another text.
 
-`{{ 'Hello' | append: ' world!' }}`
+    {% raw %}
+    {{ 'Hello' | append: ' world!' }}
+    {% endraw %}
 
 Results in:
 
@@ -84,7 +86,9 @@ Results in:
 
 Capitalizes the first letter in a given text.
 
-`{{ 'hello world!' | capitalize }}`
+    {% raw %}
+    {{ 'hello world!' | capitalize }}
+    {% endraw %}
 
 Results in:
 
@@ -94,7 +98,9 @@ Results in:
 
 Converts every letter in a given text to lower caps.
 
-`{{ 'Hello World!' | downcase }}`
+    {% raw %}
+    {{ 'Hello World!' | downcase }}
+    {% endraw %}
 
 Results in:
 
@@ -103,8 +109,10 @@ Results in:
 ### escape
 
 Enables you to put text within HTML tag properties. In this example we would like the title of a product to be added to the title property of a link tag. If the product title includes double quotes this could break the link tag, but by using escape the double quotes will be converted to safe characters.
-
-`<a href="{{ product.url }}" title="{{ product.title | escape }}">{{ product.title }}</a>`
+    
+    {% raw %}
+    <a href="{{ product.url }}" title="{{ product.title | escape }}">{{ product.title }}</a>
+    {% endraw %}
 
 Results in:
 
@@ -113,8 +121,10 @@ Results in:
 ### escape_once
 
 Prevents a given text from being escaped twice. If the escaped text in the example above would be escaped again, the result would be that the ampersand character would be converted to yet another symbol.
-
-`{{ 'A &quot;Better&quot; World' | escape }}`
+    
+    {% raw %}
+    {{ 'A &quot;Better&quot; World' | escape }}
+    {% endraw %}
 
 Results in:
 
@@ -122,7 +132,9 @@ Results in:
 
 But by using escape_once all the characters that were escaped before will not be escaped again.
 
-`{{ 'A &quot;Better&quot; World' | escape_once }}`
+    {% raw %}
+    {{ 'A &quot;Better&quot; World' | escape_once }}
+    {% endraw %}
 
 Results in:
 
@@ -132,7 +144,9 @@ Results in:
 
 Highlights specific words in a given text by wrapping an HTML element around them, which you can then style with CSS.
 
-`{{ 'To be or not to be!' | highlight: 'be' }}`
+    {% raw %}
+    {{ 'To be or not to be!' | highlight: 'be' }}
+    {% endraw %}
     
 Results in:
 
@@ -155,8 +169,10 @@ Results in:
 ### pluralize
 
 Returns a given text in either singular or plural form depending on the number provided.
-
-`Hello {{ 3 | pluralize: 'world', 'worlds' }}!`
+    
+    {% raw %}
+    Hello {{ 3 | pluralize: 'world', 'worlds' }}!
+    {% endraw %}
 
 Results in:
 
@@ -164,7 +180,9 @@ Results in:
 
 You can also translate the result of this function, if a translation exists.
 
-`Spanish: {{ 3 | pluralize: 'Product', 'Products' | translate }}`
+    {% raw %}
+    Spanish: {{ 3 | pluralize: 'Product', 'Products' | translate }}
+    {% endraw %}
 
 Results in:
 
@@ -174,7 +192,9 @@ Results in:
 
 Adds text at the beginning of another text.
 
-`{{ 'world!' | prepend: 'Hello ' }}`
+    {% raw %}
+    {{ 'world!' | prepend: 'Hello ' }}
+    {% endraw %}
     
 Results in:
 
@@ -184,7 +204,9 @@ Results in:
 
 Removes the contents of a given text.
 
-`{{ 'To be or not to be!' | remove: 'be' }}`
+    {% raw %}
+    {{ 'To be or not to be!' | remove: 'be' }}
+    {% endraw %}
 
 Results in:
 
@@ -194,7 +216,9 @@ Results in:
 
 Removes only the first occurrence of the contents of a given text.
 
-`{{ 'To be or not to be!' | remove: 'be' }}`
+    {% raw %}
+    {{ 'To be or not to be!' | remove: 'be' }}
+    {% endraw %}
 
 Results in:
 
@@ -204,7 +228,9 @@ Results in:
 
 Replaces the contents of a given text.
 
-`{{ 'To be or not to be!' | replace: 'be', 'replace' }}`
+    {% raw %}
+    {{ 'To be or not to be!' | replace: 'be', 'replace' }}
+    {% endraw %}
 
 Results in:
 
@@ -214,7 +240,9 @@ Results in:
 
 Replaces only the first occurrence of the contents of a given text.
 
-`{{ 'To be or not to be!' | replace: 'be', 'replace' }}`
+    {% raw %}
+    {{ 'To be or not to be!' | replace: 'be', 'replace' }}
+    {% endraw %}
 
 Results in:
 
@@ -224,7 +252,9 @@ Results in:
 
 Returns the number of characters in a given text.
 
-`{{ 'Hello world!' | size }}`
+    {% raw %}
+    {{ 'Hello world!' | size }}
+    {% endraw %}
 
 Results in:
 
@@ -234,7 +264,9 @@ Results in:
 
 Removes HTML tags completely from a given text.
 
-`{{ '<p>Hello <strong>world!</strong></p>'.strip_html }}`
+    {% raw %}
+    {{ '<p>Hello <strong>world!</strong></p>'.strip_html }}
+    {% endraw %}
 
 Results in:
 
@@ -258,7 +290,9 @@ Results in:
 
 Copies a given text a specific number of times.
 
-`{{ 'Hello world!' | times: 3 }}`
+    {% raw %}
+    {{ 'Hello world!' | times: 3 }}
+    {% endraw %}
 
 Results in:
 
@@ -268,7 +302,9 @@ Results in:
 
 Translates a specific word into the currently selected language of your store. If a customer chooses to see your site in Spanish, the translation will be done automatically for you, as long as the word is defined in the language settings of your site.
 
-`{{ 'hello_world' | translate }}`
+    {% raw %}
+    {{ 'hello_world' | translate }}
+    {% endraw %}
 
 Results in:
 
@@ -280,7 +316,9 @@ Remember, you can't translate something that hasn't been defined in your languag
 
 Shortens a given text to a specific number of characters and adds '...' at the end, which you will need to take into account when specifying the number of characters.
 
-`{{ 'Hello world!' | truncate: 8 }}`
+    {% raw %}
+    {{ 'Hello world!' | truncate: 8 }}
+    {% endraw %}
 
 Results in:
 
@@ -290,7 +328,9 @@ Results in:
 
 Shortens a given text to a specific number of words and adds '...' at the end.
 
-`{{ 'To be or not to be!' | truncatewords: 4 }}`
+    {% raw %}
+    {{ 'To be or not to be!' | truncatewords: 4 }}
+    {% endraw %}
 
 Results in:
 
@@ -300,7 +340,9 @@ Results in:
 
 Converts every letter in a given text to lower caps.
 
-`{{ 'Hello world!' | upcase }}`
+    {% raw %}
+    {{ 'Hello world!' | upcase }}
+    {% endraw %}
 
 Results in:
 
@@ -312,7 +354,9 @@ Results in:
 
 Finds the first item in an array.
 
-`{{ site.currencies.first.title }}`
+    {% raw %}
+    {{ site.currencies.first.title }}
+    {% endraw %}
 
 Results in:
 
@@ -322,7 +366,9 @@ Results in:
 
 Joins every item in an array and returns them in a list. You can specify a separator, which will appear between each item. This method works best when the **map helper** is applied.
 
-`{{ site.currencies | map: 'code' | join: ', ' }}`
+    {% raw %}
+    {{ site.currencies | map: 'code' | join: ', ' }}
+    {% endraw %}
 
 Results in:
 
@@ -332,7 +378,9 @@ Results in:
 
 Finds the last item in an array.
 
-`{{ site.currencies.last.title }}`
+    {% raw %}
+    {{ site.currencies.last.title }}
+    {% endraw %}
 
 Results in:
 
@@ -342,7 +390,9 @@ Results in:
 
 Joins every item in an array and returns a specific property of each item.
 
-`{{ site.currencies | map: 'code' }}`
+    {% raw %}
+    {{ site.currencies | map: 'code' }}
+    {% endraw %}
 
 Results in:
 
@@ -350,7 +400,9 @@ Results in:
 
 Obviously this result isn't very useful, but by applying other array helpers, such as **join**, we can make sense of it all.
 
-`{{ site.currencies | map: 'code' | join: ', ' }}`
+    {% raw %}
+    {{ site.currencies | map: 'code' | join: ', ' }}
+    {% endraw %}
 
 Results in:
 
@@ -360,7 +412,9 @@ Results in:
 
 Returns the number of items in an array.
 
-`{{ site.currencies.size }}`
+    {% raw %}
+    {{ site.currencies.size }}
+    {% endraw %}
 
 Results in:
 
@@ -387,16 +441,20 @@ Results in:
 ### date
 
 Formats date and time to the currently selected locale settings or to specific formatting options.
-
-`{{ 'now' | date }}`
+    
+    {% raw %}
+    {{ 'now' | date }}
+    {% endraw %}
 
 Results in:
 
 `June 28, 2011 11:39`
 
 You can format the date and time any way you want with the formatting options listed below.
-
-`Product is expected to arrive on {{ product.coming_soon_expected_date | date: "%B %d, %Y (%A)" }}`
+    
+    {% raw %}
+    Product is expected to arrive on {{ product.coming_soon_expected_date | date: "%B %d, %Y (%A)" }}
+    {% endraw %}
 
 Results in:
 
@@ -404,7 +462,9 @@ Results in:
 
 You can also type a date and then format it using the formatting options.
 
-`Printed on {{ '1.10.2011' | date: "%B %d, %Y (%A)" }}`
+    {% raw %}
+    Printed on {{ '1.10.2011' | date: "%B %d, %Y (%A)" }}
+    {% endraw %}
 
 Results in:
 
@@ -445,8 +505,10 @@ Check out [foragoodstrftime.com](http://www.foragoodstrftime.com/) if you want t
 ### divided_by
 
 Performs a division.
-
-`{{ 100 | divided_by: 25 }}`
+    
+    {% raw %}
+    {{ 100 | divided_by: 25 }}
+    {% endraw %}
 
 Results in:
 
@@ -456,7 +518,9 @@ Results in:
 
 Performs a subtraction.
 
-`{{ 100 | minus: 25 }}`
+    {% raw %}
+    {{ 100 | minus: 25 }}
+    {% endraw %}
 
 Results in:
 
@@ -466,8 +530,10 @@ Results in:
 
 Represents a number as an amount of money.
 
+    {% raw %}
     Price without money formatting: {{ product.price }}
     Price with money formatting: {{ product.price | money }}
+    {% endraw %}
 
 Results in:
 
@@ -476,7 +542,9 @@ Results in:
 
 You can also specify your own number but remember that the number should include the cents.
 
-`{{ 1099 | money }}`
+    {% raw %}
+    {{ 1099 | money }}
+    {% endraw %}
 
 Results in:
 
@@ -484,7 +552,9 @@ Results in:
 
 You can also add the currency sign or name by using the **money_with_currency** function.
 
-`Price: {{ product.price | money_with_currency }}`
+    {% raw %}
+    Price: {{ product.price | money_with_currency }}
+    {% endraw %}
 
 Results in:
 
@@ -494,8 +564,10 @@ Results in:
 
 Represents a number as an amount of money with a currency sign or name. The currency sign or name will be determined by which currency your customer has selected on your store.
 
+    {% raw %}
     Price without money formatting: {{ product.price }}
     Price with money formatting: {{ product.price | money_with_currency }}
+    {% endraw %}
 
 Results in:
 
@@ -504,7 +576,9 @@ Results in:
 
 You can also specify the currency manually.
 
-`Price: {{ product.price | money_with_currency: 'EUR' }}`
+    {% raw %}
+    Price: {{ product.price | money_with_currency: 'EUR' }}
+    {% endraw %}
 
 Results in:
 
@@ -514,7 +588,9 @@ Results in:
 
 Performs an addition.
 
-`{{ 100 | plus: 25 }}`
+    {% raw %}
+    {{ 100 | plus: 25 }}
+    {% endraw %}
 
 Results in:
 
@@ -524,7 +600,9 @@ Results in:
 
 Performs a multiplication.
 
-`{{ 100 | times: 25 }}`
+    {% raw %}
+    {{ 100 | times: 25 }}
+    {% endraw %}
 
 Results in:
 
@@ -536,7 +614,9 @@ Results in:
 
 Returns an HTML &lt;img&gt; tag for displaying an image. Usually chained with the asset_url function to ensure that the image is being fetched from the assets folder in your template. You can also specify an alt text.
 
-`{{ 'image.png' | asset_url | img_tag: 'My Image' }}`
+    {% raw %}
+    {{ 'image.png' | asset_url | img_tag: 'My Image' }}
+    {% endraw %}
 
 Results in:
 
@@ -546,7 +626,9 @@ Results in:
 
 Returns an HTML &lt;script&gt; tag for loading a Javascript file. Usually chained with the asset_url function to ensure that the Javascript file is being fetched from the assets folder in your template.
 
-`{{ 'jquery.js' | asset_url | script_tag }}`
+    {% raw %}
+    {{ 'jquery.js' | asset_url | script_tag }}
+    {% endraw %}
 
 Results in:
 
@@ -556,7 +638,9 @@ Results in:
 
 Returns an HTML &lt;link&gt; tag for loading a CSS file. Usually chained with the asset_url function to ensure that the CSS file is being fetched from the assets folder in your template.
 
-`{{ 'style.css' | asset_url | stylesheet_tag }}`
+    {% raw %}
+    {{ 'style.css' | asset_url | stylesheet_tag }}
+    {% endraw %}
 
 Results in:
 
@@ -568,7 +652,9 @@ Results in:
 
 Returns the full URL to your site's assets and enables to access all the assets in a simple way.
 
-`{{ 'image.png' | asset_url }}`
+    {% raw %}
+    {{ 'image.png' | asset_url }}
+    {% endraw %}
 
 Results in:
 
@@ -576,7 +662,9 @@ Results in:
 
 You can also chain the URL with a tag function. In this example an &lt;img&gt; tag is being generated with an alt text.
 
-`{{ 'image.png' | asset_url | img_tag: 'My Image' }}`
+    {% raw %}
+    {{ 'image.png' | asset_url | img_tag: 'My Image' }}
+    {% endraw %}
 
 Results in:
 
@@ -586,7 +674,9 @@ Results in:
 
 Returns the URL to an icon of the flag of a specific country.
 
-`{{ 'us' | flag_img_url }}`
+    {% raw %}
+    {{ 'us' | flag_img_url }}
+    {% endraw %}
 
 Results in:
 
@@ -594,7 +684,9 @@ Results in:
 
 You can also specify the size of the flag (currently only 'small' and 'medium' are available) and chain the URL with the image tag.
 
-`{{ 'uk' | flag_img_url: 'medium' | img_tag }}`
+    {% raw %}
+    {{ 'uk' | flag_img_url: 'medium' | img_tag }}
+    {% endraw %}
 
 Results in:
 
@@ -604,11 +696,15 @@ Results in:
 
 Generates a link to a specific URL or object.
 
-`{{ 'Go to StoreflowHQ.com' | link_to: 'http://www.storeflowhq.com' }}`
+    {% raw %}
+    {{ 'Go to StoreflowHQ.com' | link_to: 'http://www.storeflowhq.com' }}
+    {% endraw %}
 
 You can also link directly to an object, such as a collection, page, product, etc.
 
-`{{ product | link_to }}`
+    {% raw %}
+    {{ product | link_to }}
+    {% endraw %}
 
 Results in:
 
@@ -616,7 +712,9 @@ Results in:
 
 You can link to an object using your own description:
 
-`{{ 'View Product' | link_to: product }}`
+    {% raw %}
+    {{ 'View Product' | link_to: product }}
+    {% endraw %}
 
 Results in:
 
@@ -624,7 +722,9 @@ Results in:
 
 You can link to an object by its handle.
 
-`{{ pages.about-us | link_to }}`
+    {% raw %}
+    {{ pages.about-us | link_to }}
+    {% endraw %}
 
 Results in:
 
@@ -632,7 +732,9 @@ Results in:
 
 Finally, you the option of a title property in all of the above cases.
 
-`{{ 'Go to StoreflowHQ.com' | link_to: 'http://www.storeflowhq.com', 'Storeflow Website' }}`
+    {% raw %}
+    {{ 'Go to StoreflowHQ.com' | link_to: 'http://www.storeflowhq.com', 'Storeflow Website' }}
+    {% endraw %}
 
 Results in:
 
@@ -642,11 +744,15 @@ Results in:
 
 Generates a link to the cart.
 
-`{{ 'Go to Shopping Cart' | link_to_cart }}`
+    {% raw %}
+    {{ 'Go to Shopping Cart' | link_to_cart }}
+    {% endraw %}
 
 Also used to generate a link when adding a product to the cart.
 
-`{{ 'Add to Cart' | link_to_cart: product }}`
+    {% raw %}
+    {{ 'Add to Cart' | link_to_cart: product }}
+    {% endraw %}
 
 Results in:
 
@@ -657,61 +763,83 @@ Results in:
 Generates a link to a specific collection.
 For the sake of simplicity, we recommend that you use the `link_to` tag when linking to a collection.
 
-`{{ collection | link_to }}`
+    {% raw %}
+    {{ collection | link_to }}
+    {% endraw %}
 
 However, the advantage of this helper is that you can link to a collection by a string handle or integer ID.
 
-`{{ 't-shirts' | link_to_collection }}`
+    {% raw %}
+    {{ 't-shirts' | link_to_collection }}
+    {% endraw %}
 
 ### link\_to_currency
 
 Generates a link to a specific currency.
 For the sake of simplicity, we recommend that you use the `link_to` tag when linking to a currency.
 
-`{{ currency | link_to }}`
+    {% raw %}
+    {{ currency | link_to }}
+    {% endraw %}
 
 However, the advantage of this helper is that you can link to a currency by its ISO code.
 
-`{{ 'USD' | link_to_currency }}`
+    {% raw %}
+    {{ 'USD' | link_to_currency }}
+    {% endraw %}
 
 ### link\_to_language
 
 Generates a link to a specific language.
 For the sake of simplicity, we recommend that you use the `link_to` tag when linking to a language.
 
-`{{ language | link_to }}`
+    {% raw %}
+    {{ language | link_to }}
+    {% endraw %}
 
 However, the advantage of this helper is that you can link to a language by its ISO code.
 
-`{{ 'en' | link_to_language }}`
+    {% raw %}
+    {{ 'en' | link_to_language }}
+    {% endraw %}
 
 ### link\_to_page
 
 Generates a link to a specific page.
 For the sake of simplicity, we recommend that you use the `link_to` tag when linking to a page.
 
-`{{ page | link_to }}`
+    {% raw %}
+    {{ page | link_to }}
+    {% endraw %}
 
 However, the advantage of this helper is that you can link to a page by a string handle or integer ID.
 
-`{{ 'about-us' | link_to_page }}`
+    {% raw %}
+    {{ 'about-us' | link_to_page }}
+    {% endraw %}
 
 ### link\_to_product
 
 Generates a link to a specific product.
 For the sake of simplicity, we recommend that you use the `link_to` tag when linking to a product.
 
-`{{ product | link_to }}`
+    {% raw %}
+    {{ product | link_to }}
+    {% endraw %}
 
 However, the advantage of this helper is that you can link to a product by a string handle or integer ID.
 
-`{{ 'storeflow-t-shirt' | link_to_product }}`
+    {% raw %}
+    {{ 'storeflow-t-shirt' | link_to_product }}
+    {% endraw %}
 
 ### product\_img_url
 
 Returns the URL to a specific product image. The image size can be defined.
 
-`{{ product.images.first | product_img_url: 'thumb' }}`
+    {% raw %}
+    {{ product.images.first | product_img_url: 'thumb' }}
+    {% endraw %}
 
 Results in:
 
