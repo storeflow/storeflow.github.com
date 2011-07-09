@@ -1,0 +1,829 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Storeflow help - Template reference helpers</title>
+    <link href="/shared/css/documentation.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="/shared/css/pygments.css" media="screen" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="/css/print.css" type="text/css" media="print">
+    <script src="/shared/js/jquery.js" type="text/javascript"></script>
+    <script src="/shared/js/documentation.js" type="text/javascript"></script>
+    <script src="/js/help.js" type="text/javascript"></script>
+  </head>
+
+  <body class="documentation">
+    <div id="wrapper">
+
+      <div class="content">
+        <h1>Template reference helpers</h1>
+        <p><a href='http://support.storeflowhq.com/help/kb/templates/template-reference'>&#171; Back to reference index</a></p>
+
+<h2 id='available_text_formatting_helpers'>Available text formatting helpers</h2>
+
+<ul>
+<li>append</li>
+
+<li>capitalize</li>
+
+<li>downcase</li>
+
+<li>escape</li>
+
+<li>escape_once</li>
+
+<li>highlight</li>
+
+<li>newline_to_br</li>
+
+<li>pluralize</li>
+
+<li>prepend</li>
+
+<li>remove</li>
+
+<li>remove_first</li>
+
+<li>replace</li>
+
+<li>replace_first</li>
+
+<li>size</li>
+
+<li>strip_html</li>
+
+<li>strip_newlines</li>
+
+<li>times</li>
+
+<li>translate</li>
+
+<li>truncate</li>
+
+<li>truncatewords</li>
+
+<li>upcase</li>
+</ul>
+
+<h2 id='available_array_helpers'>Available array helpers</h2>
+
+<ul>
+<li>first</li>
+
+<li>join</li>
+
+<li>last</li>
+
+<li>map</li>
+
+<li>size</li>
+
+<li>sort</li>
+</ul>
+
+<h2 id='available_numbers_money_and_date_helpers'>Available numbers, money and date helpers</h2>
+
+<ul>
+<li>date</li>
+
+<li>divided_by</li>
+
+<li>minus</li>
+
+<li>money</li>
+
+<li>money_with_currency</li>
+
+<li>plus</li>
+</ul>
+
+<h2 id='available_tag_helpers'>Available tag helpers</h2>
+
+<ul>
+<li>img_tag</li>
+
+<li>script_tag</li>
+
+<li>stylesheet_tag</li>
+</ul>
+
+<h2 id='available_url_helpers'>Available URL helpers</h2>
+
+<ul>
+<li>asset_url</li>
+
+<li>flag_img_url</li>
+
+<li>link_to</li>
+
+<li>link_to_cart</li>
+
+<li>link_to_collection</li>
+
+<li>link_to_currency</li>
+
+<li>link_to_language</li>
+
+<li>link_to_page</li>
+
+<li>link_to_product</li>
+
+<li>product_img_url</li>
+</ul>
+
+<h2 id='text_formatting'>Text formatting</h2>
+
+<h3 id='append'>append</h3>
+
+<p>Adds text at the end of another text.</p>
+
+<p><code>{{ &#39;Hello&#39; | append: &#39; world!&#39; }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>Hello world!</code></p>
+
+<h3 id='capitalize'>capitalize</h3>
+
+<p>Capitalizes the first letter in a given text.</p>
+
+<p><code>{{ &#39;hello world!&#39; | capitalize }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>Hello world!</code></p>
+
+<h3 id='downcase'>downcase</h3>
+
+<p>Converts every letter in a given text to lower caps.</p>
+
+<p><code>{{ &#39;Hello World!&#39; | downcase }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>hello world!</code></p>
+
+<h3 id='escape'>escape</h3>
+
+<p>Enables you to put text within HTML tag properties. In this example we would like the title of a product to be added to the title property of a link tag. If the product title includes double quotes this could break the link tag, but by using escape the double quotes will be converted to safe characters.</p>
+
+<p><code>&lt;a href=&quot;{{ product.url }}&quot; title=&quot;{{ product.title | escape }}&quot;&gt;{{ product.title }}&lt;/a&gt;</code></p>
+
+<p>Results in:</p>
+
+<p><code>&lt;a href=&quot;/products/a_better_world&quot; title=&quot;A &amp;quot;Better&amp;quot; World&quot;&gt;A &quot;Better&quot; World&lt;/a&gt;</code></p>
+
+<h3 id='escape_once'>escape_once</h3>
+
+<p>Prevents a given text from being escaped twice. If the escaped text in the example above would be escaped again, the result would be that the ampersand character would be converted to yet another symbol.</p>
+
+<p><code>{{ &#39;A &amp;quot;Better&amp;quot; World&#39; | escape }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>A &amp;amp;quot;Better&amp;amp;quot; World</code></p>
+
+<p>But by using escape_once all the characters that were escaped before will not be escaped again.</p>
+
+<p><code>{{ &#39;A &amp;quot;Better&amp;quot; World&#39; | escape_once }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>A &amp;quot;Better&amp;quot; World</code></p>
+
+<h3 id='highlight'>highlight</h3>
+
+<p>Highlights specific words in a given text by wrapping an HTML element around them, which you can then style with CSS.</p>
+
+<p><code>{{ &#39;To be or not to be!&#39; | highlight: &#39;be&#39; }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>To &lt;strong class=&quot;highlight&quot;&gt;be&lt;/strong&gt; or not to &lt;strong class=&quot;highlight&quot;&gt;be&lt;/strong&gt;!</code></p>
+
+<h3 id='newline_to_br'>newline_to_br</h3>
+
+<p>Converts all line breaks to HTML &#60;br /&#62; tags.</p>
+
+<pre><code>{{ &#39;Line 1
+Line 2
+Line 3&#39;.newline_to_br }}</code></pre>
+
+<p>Results in:</p>
+
+<p><code>Line 1&lt;br /&gt; Line 2&lt;br /&gt; Line 3&lt;br /&gt;</code></p>
+
+<h3 id='pluralize'>pluralize</h3>
+
+<p>Returns a given text in either singular or plural form depending on the number provided.</p>
+
+<p><code>Hello {{ 3 | pluralize: &#39;world&#39;, &#39;worlds&#39; }}!</code></p>
+
+<p>Results in:</p>
+
+<p><code>Hello worlds!</code></p>
+
+<p>You can also translate the result of this function, if a translation exists.</p>
+
+<p><code>Spanish: {{ 3 | pluralize: &#39;Product&#39;, &#39;Products&#39; | translate }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>Spanish: Productos</code></p>
+
+<h3 id='prepend'>prepend</h3>
+
+<p>Adds text at the beginning of another text.</p>
+
+<p><code>{{ &#39;world!&#39; | prepend: &#39;Hello &#39; }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>Hello world!</code></p>
+
+<h3 id='remove'>remove</h3>
+
+<p>Removes the contents of a given text.</p>
+
+<p><code>{{ &#39;To be or not to be!&#39; | remove: &#39;be&#39; }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>To or not to !</code></p>
+
+<h3 id='remove_first'>remove_first</h3>
+
+<p>Removes only the first occurrence of the contents of a given text.</p>
+
+<p><code>{{ &#39;To be or not to be!&#39; | remove: &#39;be&#39; }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>To or not to be!</code></p>
+
+<h3 id='replace'>replace</h3>
+
+<p>Replaces the contents of a given text.</p>
+
+<p><code>{{ &#39;To be or not to be!&#39; | replace: &#39;be&#39;, &#39;replace&#39; }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>To replace or not to replace!</code></p>
+
+<h3 id='replace_first'>replace_first</h3>
+
+<p>Replaces only the first occurrence of the contents of a given text.</p>
+
+<p><code>{{ &#39;To be or not to be!&#39; | replace: &#39;be&#39;, &#39;replace&#39; }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>To replace or not to be!</code></p>
+
+<h3 id='size'>size</h3>
+
+<p>Returns the number of characters in a given text.</p>
+
+<p><code>{{ &#39;Hello world!&#39; | size }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>12</code></p>
+
+<h3 id='strip_html'>strip_html</h3>
+
+<p>Removes HTML tags completely from a given text.</p>
+
+<p><code>{{ &#39;&lt;p&gt;Hello &lt;strong&gt;world!&lt;/strong&gt;&lt;/p&gt;&#39;.strip_html }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>Hello world!</code></p>
+
+<h3 id='strip_newlines'>strip_newlines</h3>
+
+<p>Removes all line breaks from a given text.</p>
+
+<pre><code>{{ &#39;Line 1
+Line 2
+Line 3&#39;.strip_newlines }}</code></pre>
+
+<p>Results in:</p>
+
+<p><code>Line 1 Line 2 Line 3</code></p>
+
+<h3 id='times'>times</h3>
+
+<p>Copies a given text a specific number of times.</p>
+
+<p><code>{{ &#39;Hello world!&#39; | times: 3 }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>Hello world!Hello world!Hello world!</code></p>
+
+<h3 id='translate'>translate</h3>
+
+<p>Translates a specific word into the currently selected language of your store. If a customer chooses to see your site in Spanish, the translation will be done automatically for you, as long as the word is defined in the language settings of your site.</p>
+
+<p><code>{{ &#39;hello_world&#39; | translate }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>Hola mundo!</code></p>
+
+<p>Remember, you can&#8217;t translate something that hasn&#8217;t been defined in your language settings. However, if a system translation isn&#8217;t available you can add as many custom translations as you wish.</p>
+
+<h3 id='truncate'>truncate</h3>
+
+<p>Shortens a given text to a specific number of characters and adds &#8217;&#8230;&#8217; at the end, which you will need to take into account when specifying the number of characters.</p>
+
+<p><code>{{ &#39;Hello world!&#39; | truncate: 8 }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>Hello...</code></p>
+
+<h3 id='truncatewords'>truncatewords</h3>
+
+<p>Shortens a given text to a specific number of words and adds &#8217;&#8230;&#8217; at the end.</p>
+
+<p><code>{{ &#39;To be or not to be!&#39; | truncatewords: 4 }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>To be or not...</code></p>
+
+<h3 id='upcase'>upcase</h3>
+
+<p>Converts every letter in a given text to lower caps.</p>
+
+<p><code>{{ &#39;Hello world!&#39; | upcase }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>HELLO WORLD!</code></p>
+
+<h2 id='arrays_list_of_objects'>Arrays (list of objects)</h2>
+
+<h3 id='first'>first</h3>
+
+<p>Finds the first item in an array.</p>
+
+<p><code>{{ site.currencies.first.title }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>AUD</code></p>
+
+<h3 id='join'>join</h3>
+
+<p>Joins every item in an array and returns them in a list. You can specify a separator, which will appear between each item. This method works best when the <strong>map helper</strong> is applied.</p>
+
+<p><code>{{ site.currencies | map: &#39;code&#39; | join: &#39;, &#39; }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>AUD, USD, ZAR</code></p>
+
+<h3 id='last'>last</h3>
+
+<p>Finds the last item in an array.</p>
+
+<p><code>{{ site.currencies.last.title }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>ZAR</code></p>
+
+<h3 id='map'>map</h3>
+
+<p>Joins every item in an array and returns a specific property of each item.</p>
+
+<p><code>{{ site.currencies | map: &#39;code&#39; }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>AUDUSDZAR</code></p>
+
+<p>Obviously this result isn&#8217;t very useful, but by applying other array helpers, such as <strong>join</strong>, we can make sense of it all.</p>
+
+<p><code>{{ site.currencies | map: &#39;code&#39; | join: &#39;, &#39; }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>AUD, USD, ZAR</code></p>
+
+<h3 id='size'>size</h3>
+
+<p>Returns the number of items in an array.</p>
+
+<p><code>{{ site.currencies.size }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>3</code></p>
+
+<h3 id='sort'>sort</h3>
+
+<p>Sorts an array by a specific property.</p>
+
+<pre><code>{% for currency in site.currencies | sort: &#39;code&#39; %}
+  {{ currency.code }} - {{ currency.name }}
+{% endfor %}</code></pre>
+
+<p>Results in:</p>
+
+<pre><code>AUD - Australian Dollar
+USD - United States Dollar
+ZAR - South African Rand</code></pre>
+
+<h2 id='numbers_money_and_dates'>Numbers, money and dates</h2>
+
+<h3 id='date'>date</h3>
+
+<p>Formats date and time to the currently selected locale settings or to specific formatting options.</p>
+
+<p><code>{{ &#39;now&#39; | date }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>June 28, 2011 11:39</code></p>
+
+<p>You can format the date and time any way you want with the formatting options listed below.</p>
+
+<p><code>Product is expected to arrive on {{ product.coming_soon_expected_date | date: &quot;%B %d, %Y (%A)&quot; }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>Product is expected to arrive on October 01, 2011 (Saturday)</code></p>
+
+<p>You can also type a date and then format it using the formatting options.</p>
+
+<p><code>Printed on {{ &#39;1.10.2011&#39; | date: &quot;%B %d, %Y (%A)&quot; }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>Printed on October 01, 2011 (Saturday)</code></p>
+
+<p>Full list of options for formatting:</p>
+
+<pre><code>%a - The abbreviated weekday name (&quot;Sun&quot;)
+%A - The full weekday name (&quot;Sunday&quot;)
+%b - The abbreviated month name (&quot;Jan&quot;)
+%B - The full month name (&quot;January&quot;&quot;)
+%c - The preferred local date and time representation
+%d - Day of the month (01..31)
+%e - Day of the month without a leading zero (1..31)
+%H - Hour of the day, 24-hour clock (00..23)
+%I - Hour of the day, 12-hour clock (01..12)
+%j - Day of the year (001..366)
+%m - Month of the year (01..12)
+%M - Minute of the hour (00..59)
+%p - Meridian indicator (&quot;AM&quot;    or &quot;PM&quot;)
+%S - Second of the minute (00..60)
+%U - Week number of the current year,
+     starting with the first Sunday as the first
+     day of the first week (00..53)
+%W - Week number of the current year,
+     starting with the first Monday as the first
+     day of the first week (00..53)
+%w - Day of the week (Sunday is 0, 0..6)
+%x - Preferred representation for the date alone, no time
+%X - Preferred representation for the time alone, no date
+%y - Year without a century (00..99)
+%Y - Year with century
+%Z - Time zone name
+%% - Literal &quot;%&quot; character</code></pre>
+
+<p>Check out <a href='http://www.foragoodstrftime.com/'>foragoodstrftime.com</a> if you want to try these formatting options.</p>
+
+<h3 id='divided_by'>divided_by</h3>
+
+<p>Performs a division.</p>
+
+<p><code>{{ 100 | divided_by: 25 }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>4</code></p>
+
+<h3 id='minus'>minus</h3>
+
+<p>Performs a subtraction.</p>
+
+<p><code>{{ 100 | minus: 25 }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>75</code></p>
+
+<h3 id='money'>money</h3>
+
+<p>Represents a number as an amount of money.</p>
+
+<pre><code>Price without money formatting: {{ product.price }}
+Price with money formatting: {{ product.price | money }}</code></pre>
+
+<p>Results in:</p>
+
+<pre><code>Price without money formatting: 1099
+Price with money formatting: 10.99</code></pre>
+
+<p>You can also specify your own number but remember that the number should include the cents.</p>
+
+<p><code>{{ 1099 | money }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>10.99</code></p>
+
+<p>You can also add the currency sign or name by using the <strong>money_with_currency</strong> function.</p>
+
+<p><code>Price: {{ product.price | money_with_currency }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>Price: $10.99</code></p>
+
+<h3 id='money_with_currency'>money_with_currency</h3>
+
+<p>Represents a number as an amount of money with a currency sign or name. The currency sign or name will be determined by which currency your customer has selected on your store.</p>
+
+<pre><code>Price without money formatting: {{ product.price }}
+Price with money formatting: {{ product.price | money_with_currency }}</code></pre>
+
+<p>Results in:</p>
+
+<pre><code>Price without money formatting: 1099
+Price with money formatting: $10.99</code></pre>
+
+<p>You can also specify the currency manually.</p>
+
+<p><code>Price: {{ product.price | money_with_currency: &#39;EUR&#39; }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>Price: €10.99</code></p>
+
+<h3 id='plus'>plus</h3>
+
+<p>Performs an addition.</p>
+
+<p><code>{{ 100 | plus: 25 }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>125</code></p>
+
+<h3 id='times'>times</h3>
+
+<p>Performs a multiplication.</p>
+
+<p><code>{{ 100 | times: 25 }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>2500</code></p>
+
+<h2 id='tags'>Tags</h2>
+
+<h3 id='img_tag'>img_tag</h3>
+
+<p>Returns an HTML &#60;img&#62; tag for displaying an image. Usually chained with the asset_url function to ensure that the image is being fetched from the assets folder in your template. You can also specify an alt text.</p>
+
+<p><code>{{ &#39;image.png&#39; | asset_url | img_tag: &#39;My Image&#39; }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>&lt;img src=&quot;http://static.storeflowhq.com/assets/0000/0001/theme/image.png&quot; alt=&quot;My Image&quot; /&gt;</code></p>
+
+<h3 id='script_tag'>script_tag</h3>
+
+<p>Returns an HTML &#60;script&#62; tag for loading a Javascript file. Usually chained with the asset_url function to ensure that the Javascript file is being fetched from the assets folder in your template.</p>
+
+<p><code>{{ &#39;jquery.js&#39; | asset_url | script_tag }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>&lt;script src=&quot;http://static.storeflowhq.com/assets/0000/0001/theme/jquery.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</code></p>
+
+<h3 id='stylesheet_tag'>stylesheet_tag</h3>
+
+<p>Returns an HTML &#60;link&#62; tag for loading a CSS file. Usually chained with the asset_url function to ensure that the CSS file is being fetched from the assets folder in your template.</p>
+
+<p><code>{{ &#39;style.css&#39; | asset_url | stylesheet_tag }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>&lt;link href=&quot;http://static.storeflowhq.com/assets/0000/0001/theme/style.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; media=&quot;all&quot; /&gt;</code></p>
+
+<h2 id='urls'>URLs</h2>
+
+<h3 id='asset_url'>asset_url</h3>
+
+<p>Returns the full URL to your site&#8217;s assets and enables to access all the assets in a simple way.</p>
+
+<p><code>{{ &#39;image.png&#39; | asset_url }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>http://static.storeflowhq.com/assets/0000/0001/theme/image.png</code></p>
+
+<p>You can also chain the URL with a tag function. In this example an &#60;img&#62; tag is being generated with an alt text.</p>
+
+<p><code>{{ &#39;image.png&#39; | asset_url | img_tag: &#39;My Image&#39; }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>&lt;img src=&quot;http://static.storeflowhq.com/assets/0000/0001/theme/image.png&quot; alt=&quot;My Image&quot; /&gt;</code></p>
+
+<h3 id='flag_img_url'>flag_img_url</h3>
+
+<p>Returns the URL to an icon of the flag of a specific country.</p>
+
+<p><code>{{ &#39;us&#39; | flag_img_url }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>http://shared.storeflowhq.local/images/flags/small/us.png</code></p>
+
+<p>You can also specify the size of the flag (currently only &#8216;small&#8217; and &#8216;medium&#8217; are available) and chain the URL with the image tag.</p>
+
+<p><code>{{ &#39;uk&#39; | flag_img_url: &#39;medium&#39; | img_tag }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>&lt;img src=&quot;http://shared.storeflowhq.local/images/flags/medium/uk.png&quot; /&gt;</code></p>
+
+<h3 id='link_to'>link_to</h3>
+
+<p>Generates a link to a specific URL or object.</p>
+
+<p><code>{{ &#39;Go to StoreflowHQ.com&#39; | link_to: &#39;http://www.storeflowhq.com&#39; }}</code></p>
+
+<p>You can also link directly to an object, such as a collection, page, product, etc.</p>
+
+<p><code>{{ product | link_to }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>&lt;a href=&quot;http://demo.mystoreflow.com/en/products/storeflow-t-shirt&quot;&gt;Storeflow T-shirt&lt;/a&gt;</code></p>
+
+<p>You can link to an object using your own description:</p>
+
+<p><code>{{ &#39;View Product&#39; | link_to: product }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>&lt;a href=&quot;http://demo.mystoreflow.com/en/products/storeflow-t-shirt&quot;&gt;View Product&lt;/a&gt;</code></p>
+
+<p>You can link to an object by its handle.</p>
+
+<p><code>{{ pages.about-us | link_to }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>&lt;a href=&quot;http://demo.mystoreflow.com/en/pages/about-us&quot;&gt;About Us&lt;/a&gt;</code></p>
+
+<p>Finally, you the option of a title property in all of the above cases.</p>
+
+<p><code>{{ &#39;Go to StoreflowHQ.com&#39; | link_to: &#39;http://www.storeflowhq.com&#39;, &#39;Storeflow Website&#39; }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>&lt;a href=&quot;http://www.storeflowhq.com&quot; title=&quot;Storeflow Website&quot;&gt;Go to StoreflowHQ.com&lt;/a&gt;</code></p>
+
+<h3 id='link_to_cart'>link_to_cart</h3>
+
+<p>Generates a link to the cart.</p>
+
+<p><code>{{ &#39;Go to Shopping Cart&#39; | link_to_cart }}</code></p>
+
+<p>Also used to generate a link when adding a product to the cart.</p>
+
+<p><code>{{ &#39;Add to Cart&#39; | link_to_cart: product }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>&lt;a href=&quot;/en/cart/add?product=1&quot;&gt;Add to Cart&lt;/a&gt;</code></p>
+
+<h3 id='link_to_collection'>link_to_collection</h3>
+
+<p>Generates a link to a specific collection. For the sake of simplicity, we recommend that you use the <code>link_to</code> tag when linking to a collection.</p>
+
+<p><code>{{ collection | link_to }}</code></p>
+
+<p>However, the advantage of this helper is that you can link to a collection by a string handle or integer ID.</p>
+
+<p><code>{{ &#39;t-shirts&#39; | link_to_collection }}</code></p>
+
+<h3 id='link_to_currency'>link_to_currency</h3>
+
+<p>Generates a link to a specific currency. For the sake of simplicity, we recommend that you use the <code>link_to</code> tag when linking to a currency.</p>
+
+<p><code>{{ currency | link_to }}</code></p>
+
+<p>However, the advantage of this helper is that you can link to a currency by its ISO code.</p>
+
+<p><code>{{ &#39;USD&#39; | link_to_currency }}</code></p>
+
+<h3 id='link_to_language'>link_to_language</h3>
+
+<p>Generates a link to a specific language. For the sake of simplicity, we recommend that you use the <code>link_to</code> tag when linking to a language.</p>
+
+<p><code>{{ language | link_to }}</code></p>
+
+<p>However, the advantage of this helper is that you can link to a language by its ISO code.</p>
+
+<p><code>{{ &#39;en&#39; | link_to_language }}</code></p>
+
+<h3 id='link_to_page'>link_to_page</h3>
+
+<p>Generates a link to a specific page. For the sake of simplicity, we recommend that you use the <code>link_to</code> tag when linking to a page.</p>
+
+<p><code>{{ page | link_to }}</code></p>
+
+<p>However, the advantage of this helper is that you can link to a page by a string handle or integer ID.</p>
+
+<p><code>{{ &#39;about-us&#39; | link_to_page }}</code></p>
+
+<h3 id='link_to_product'>link_to_product</h3>
+
+<p>Generates a link to a specific product. For the sake of simplicity, we recommend that you use the <code>link_to</code> tag when linking to a product.</p>
+
+<p><code>{{ product | link_to }}</code></p>
+
+<p>However, the advantage of this helper is that you can link to a product by a string handle or integer ID.</p>
+
+<p><code>{{ &#39;storeflow-t-shirt&#39; | link_to_product }}</code></p>
+
+<h3 id='product_img_url'>product_img_url</h3>
+
+<p>Returns the URL to a specific product image. The image size can be defined.</p>
+
+<p><code>{{ product.images.first | product_img_url: &#39;thumb&#39; }}</code></p>
+
+<p>Results in:</p>
+
+<p><code>&lt;img src=&quot;http://static.storeflowhq.com/assets/0000/0001/images/thumb/storeflow_t_shirt.jpg&quot; alt=&quot;Storeflow T-shirt&quot; /&gt;</code></p>
+
+<p>Available product sizes (along with the maximum width and height in pixels):</p>
+
+<pre><code>pico       16x16
+icon       32x32
+thumb      50x50
+small      100x100
+compact    160x160
+medium     240x240
+large      480x480
+xlarge     600x600
+original   1024x1024</code></pre>
+
+<h2 id='back_to_index'>Back to Index</h2>
+
+<p><a href='http://support.storeflowhq.com/help/kb/templates/template-reference'>&#171; Back to reference index</a></p>
+      </div>
+
+      <div id="js-sidebar" class="sidebar-shell">
+        <div class="js-accordion-list sidebar-module">
+          <ul>
+            
+            <li class="js-topic">
+              
+                <h3><a href="#">Templates</a></h3>
+              
+              <ul class="js-guides">
+                
+                  
+                    <li><a href="/template_reference">Template reference</a></li>
+                  
+                
+                  
+                    <li><a href="/available_translations">Available Translations</a></li>
+                  
+                
+                  
+                    <li><a href="/template_guide">Template guide</a></li>
+                  
+                
+                  
+                    <li><a href="/template_reference_logic_functions">Template reference logic functions</a></li>
+                  
+                
+                  
+                    <li class="disable"><span>Template reference helpers</span></li>
+                  
+                
+              </ul>
+            </li>
+            
+          </ul>
+        </div> <!-- /sidebar-module -->
+      </div><!-- /sidebar-shell -->
+
+    </div><!-- #wrapper -->
+
+  </body>
+</html>

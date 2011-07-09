@@ -142,9 +142,11 @@ Results in:
 
 Converts all line breaks to HTML &lt;br /&gt; tags.
 
+    {% raw %}
     {{ 'Line 1
     Line 2
     Line 3'.newline_to_br }}
+    {% endraw %}
 
 Results in:
 
@@ -242,9 +244,11 @@ Results in:
 
 Removes all line breaks from a given text.
 
+    {% raw %}
     {{ 'Line 1
     Line 2
     Line 3'.strip_newlines }}
+    {% endraw %}
 
 Results in:
 
@@ -366,9 +370,11 @@ Results in:
 
 Sorts an array by a specific property.
 
+    {% raw %}
     {% for currency in site.currencies | sort: 'code' %}
       {{ currency.code }} - {{ currency.name }}
     {% endfor %}
+    {% endraw %}
 
 Results in:
 
