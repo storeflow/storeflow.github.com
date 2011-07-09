@@ -74,9 +74,7 @@ categories: templates
 
 Adds text at the end of another text.
 
-    {% raw %}
     {{ 'Hello' | append: ' world!' }}
-    {% endraw %}
 
 Results in:
 
